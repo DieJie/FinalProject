@@ -11,6 +11,7 @@ import Model.Dosen;
 import Model.KelasTugasAkhir;
 import Model.Mahasiswa;
 import View.DosenPanel;
+import View.HomeScreen;
 import View.seeTA;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,11 +33,13 @@ public class Handler_SeeTA extends MouseAdapter implements ActionListener {
     KelasTugasAkhir mKTA;
     DefaultTableModel tdmodel;
     DefaultTableModel tmmodel;
+    HomeScreen HS;
     
     public Handler_SeeTA(){
         this.model = Handler_Home.model;
         d = Handler_Login.d;
         DP = Handler_Dosen.ViewDosenPanel;
+        HS = Handler_Home.ViewHome;
         ViewSeeTA = new seeTA();
         ViewSeeTA.addActionListener(this);
         ViewSeeTA.addMouseAdapter(this);
@@ -63,10 +66,12 @@ public class Handler_SeeTA extends MouseAdapter implements ActionListener {
             ViewSeeTA.setTFKodeKelas("");
             ViewSeeTA.setTFTopik("");
             ViewSeeTA.setListKodeKelas(d.getListKodeKelas());
+            DP.getBtCreateTA().setText("Buat Kelas TA");
+            HS.setListTA(model.getListKodeKelas());
         }else if(source.equals(ViewSeeTA.getBtEdit())){
             boolean owner = mKTA == d.getKelasTA();
             if(owner){
-                Handler_EditTA HETA = new Handler_EditTA(); 
+                Handler_EditKTA HETA = new Handler_EditKTA(); 
             }else{
                 JOptionPane.showMessageDialog(null, "Maaf anda bukan pemilik kelas ini", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -94,14 +99,16 @@ public class Handler_SeeTA extends MouseAdapter implements ActionListener {
             
             tmmodel = (DefaultTableModel) ViewSeeTA.getTableMhs().getModel();
             ArrayList<Mahasiswa> listMahasiswa = model.SearchListMahasiswa(idKelas);
-            Object rowDataMhs[] = new Object[3];
-            for(int i = 0; i < listDosen.size(); i++)
-            {
-                rowDataMhs[0] = listMahasiswa.get(i).getNama();
-                rowDataMhs[1] = listMahasiswa.get(i).getNim();
-                rowDataMhs[2] = listMahasiswa.get(i).getNohp();
-                tmmodel.addRow(rowDataMhs);
-            }           
+            if(!listMahasiswa.isEmpty()){
+                Object rowDataMhs[] = new Object[3];
+                for(int i = 0; i < listDosen.size(); i++)
+                {
+                    rowDataMhs[0] = listMahasiswa.get(i).getNama();
+                    rowDataMhs[1] = listMahasiswa.get(i).getNim();
+                    rowDataMhs[2] = listMahasiswa.get(i).getNohp();
+                    tmmodel.addRow(rowDataMhs);
+                }           
+            }
         }
     }
 }

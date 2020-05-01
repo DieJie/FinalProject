@@ -23,6 +23,7 @@ public class seeTA extends javax.swing.JFrame {
      */
     public seeTA() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

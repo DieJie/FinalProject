@@ -75,4 +75,13 @@ public class Dosen extends Person{
         getListKelasTA().remove(indexTA);
         kelasTA = null;
     }
+    
+    public KelasTugasAkhir getKTA(String KodeKelas){
+        for(KelasTugasAkhir KTA: listKelasTA){
+            if(KTA.getKodeKelas().equals(KodeKelas)){
+                return KTA;
+            }
+        }
+        return null;
+    }
 }

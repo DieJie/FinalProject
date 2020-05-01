@@ -46,10 +46,12 @@ public class Handler_Dosen implements ActionListener{
             HS.setVisible(true);
         }else if(source.equals(ViewDosenPanel.getBtCreateTA())){
             if(d.getKelasTA()==null){
-                Handler_CreateTA HCTA = new Handler_CreateTA();
+                Handler_CreateKTA HCTA = new Handler_CreateKTA();
             }else{
                 Handler_SeeTA HETA = new Handler_SeeTA();
             }
+        }else if(source.equals(ViewDosenPanel.getBtApproveMhs())){
+            Handler_ApproveMhs HAM = new Handler_ApproveMhs();
         }
     }
 }

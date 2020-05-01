@@ -16,13 +16,14 @@ import javax.swing.JTextField;
  *
  * @author DivaPrasetya
  */
-public class EditTAPanel extends javax.swing.JFrame {
+public class EditKTA extends javax.swing.JFrame {
 
     /**
      * Creates new form EditTAPanel
      */
-    public EditTAPanel() {
+    public EditKTA() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

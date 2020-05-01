@@ -19,6 +19,7 @@ public class MahasiswaPanel extends javax.swing.JFrame {
      */
     public MahasiswaPanel() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -150,10 +151,6 @@ public class MahasiswaPanel extends javax.swing.JFrame {
         return btProfilSaya;
     }
 
-    public JButton getBtStatusTA() {
-        return btStatusTA;
-    }
-
     public JButton getBtUploadTA() {
         return btUploadTA;
     }
@@ -161,7 +158,6 @@ public class MahasiswaPanel extends javax.swing.JFrame {
     public void addActionListener(ActionListener a){
         btOut.addActionListener(a);
         btProfilSaya.addActionListener(a);
-        btStatusTA.addActionListener(a);
         btUploadTA.addActionListener(a);
     }
 

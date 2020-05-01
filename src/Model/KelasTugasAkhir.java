@@ -86,4 +86,32 @@ public class KelasTugasAkhir {
         }
         return listNamaMahasiswa;
     }
+    
+    public Dosen getDosen(String nama){
+        for(Dosen d: timDosen){
+            if(d.getNama().equals(nama)){
+                return d;
+            }
+        }
+        return null;
+    }
+    
+    public Mahasiswa getMhs(String nama){
+        for(Mahasiswa m: daftarMhsTA){
+            if(m.getNama().equals(nama)){
+                return m;
+            }
+        }
+        return null;
+    }
+    
+    public String[] getListMahasiswa(){
+        String[] listMhs=new String[daftarMhsTA.size()];
+        int i = 0;
+        for (Mahasiswa m: daftarMhsTA){
+                listMhs[i] = m.getNama();
+                i++;
+        }
+        return listMhs;
+    }
 }

@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author DivaPrasetya
  */
 public class Handler_Mahasiswa implements ActionListener {
-    MahasiswaPanel ViewMhsPanel;
+    static MahasiswaPanel ViewMhsPanel;
     Application model;
     Mahasiswa m;
     HomeScreen HS;
@@ -41,6 +41,12 @@ public class Handler_Mahasiswa implements ActionListener {
         }else if(source.equals(ViewMhsPanel.getBtOut())){
             ViewMhsPanel.setVisible(false);
             HS.setVisible(true);
+        }else if(source.equals(ViewMhsPanel.getBtUploadTA())){
+            if(m.getKelasTA() == null){
+                Handler_CreateTA HCTA = new Handler_CreateTA();
+            }else{
+                Handler_EditTA HETA = new Handler_EditTA();
+            }
         }
     }
 }

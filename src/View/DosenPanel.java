@@ -19,6 +19,7 @@ public class DosenPanel extends javax.swing.JFrame {
      */
     public DosenPanel() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

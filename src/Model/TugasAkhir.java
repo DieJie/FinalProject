@@ -15,15 +15,47 @@ import java.util.List;
 public class TugasAkhir {
     private String judul;
     private String topik;
-    private List<Dosen> pembimbing;
-    private List<Dosen> pembimbingNonApproval;
+    private ArrayList<Dosen> pembimbing;
+    private ArrayList<Dosen> pembimbingNonApproval;
+    private ArrayList<Dosen> pembimbingReject;
     
-    public TugasAkhir(List pembimbing, String judul, String topik){
+    public TugasAkhir(String judul, String topik){
         this.judul = judul;
         this.topik=topik;
         pembimbing = new ArrayList();
         pembimbingNonApproval = new ArrayList();
         pembimbingNonApproval = pembimbing;
+        pembimbingReject = new ArrayList();
     }
+
+    public String getJudul() {
+        return judul;
+    }
+
+    public String getTopik() {
+        return topik;
+    }
+
+    public ArrayList<Dosen> getPembimbing() {
+        return pembimbing;
+    }
+
+    public ArrayList<Dosen> getPembimbingNonApproval() {
+        return pembimbingNonApproval;
+    }
+
+    public void setJudul(String judul) {
+        this.judul = judul;
+    }
+
+    public void setTopik(String topik) {
+        this.topik = topik;
+    }
+
+    public ArrayList<Dosen> getPembimbingReject() {
+        return pembimbingReject;
+    }
+    
+    
    
 }

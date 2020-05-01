@@ -5,15 +5,12 @@
  */
 package Controller;
 
+import static Controller.Handler_Home.model;
 import Model.Application;
 import Model.Dosen;
 import Model.Mahasiswa;
-import Model.Person;
-import View.DosenPanel;
-import View.EditTAPanel;
-import View.HomeScreen;
-import View.createTA;
-import View.seeTA;
+import View.EditTA;
+import View.MahasiswaPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -27,28 +24,51 @@ import javax.swing.table.DefaultTableModel;
  * @author DivaPrasetya
  */
 public class Handler_EditTA extends MouseAdapter implements ActionListener{
-    EditTAPanel ViewEditTA;
+    EditTA ViewEditTA;
     Application model;
+    Mahasiswa m;
+    MahasiswaPanel MP;
     Dosen d;
-    HomeScreen HS;
-    DefaultTableModel tmodel;
-    seeTA sTA;
-    Object rowData[];
-    Person p;
+    DefaultTableModel tdmodel;
     
     public Handler_EditTA(){
-        p = null;
-        this.model=Handler_Home.getModel();
-        d = Handler_Login.d;
-        HS = Handler_Home.ViewHome;
-        sTA = Handler_SeeTA.ViewSeeTA;
-        ViewEditTA = new EditTAPanel();
+        this.model = Handler_Home.model;
+        m = Handler_Login.m;
+        MP = Handler_Mahasiswa.ViewMhsPanel;
+        ViewEditTA = new EditTA();
         ViewEditTA.addActionListener(this);
         ViewEditTA.addMouseAdapter(this);
         ViewEditTA.setVisible(true);
-        ViewEditTA.setListDosen(d.getKelasTA().getListNamaDosen(), d.getKelasTA().getListNamaMahasiswa());
-        tmodel = (DefaultTableModel) ViewEditTA.getTableUser().getModel();
-        rowData = new Object[3];
+        ViewEditTA.getTFKodeKelas().setText(m.getKelasTA().getKodeKelas());
+        ViewEditTA.getTFJudulTA().setText(m.getTugasAkhir().getJudul());
+        ViewEditTA.getTFTopikTA().setText(m.getTugasAkhir().getTopik());
+        ViewEditTA.setListDosen(m.getKelasTA().getListNamaDosen());
+        tdmodel = (DefaultTableModel) ViewEditTA.getTableDosen().getModel();
+        ArrayList<Dosen> listDosenA = m.getTugasAkhir().getPembimbing();
+        Object rowDataDosen[] = new Object[3];
+        for(int i = 0; i < listDosenA.size(); i++)
+        {
+            rowDataDosen[0] = listDosenA.get(i).getNama();
+            rowDataDosen[1] = listDosenA.get(i).getNidn();
+            rowDataDosen[2] = "Approve";
+            tdmodel.addRow(rowDataDosen);
+        }
+        ArrayList<Dosen> listDosenAN = m.getTugasAkhir().getPembimbingNonApproval();
+        for(int i = 0; i < listDosenA.size(); i++)
+        {
+            rowDataDosen[0] = listDosenAN.get(i).getNama();
+            rowDataDosen[1] = listDosenAN.get(i).getNidn();
+            rowDataDosen[2] = "Non Approve";
+            tdmodel.addRow(rowDataDosen);
+        }
+        ArrayList<Dosen> listDosenR = m.getTugasAkhir().getPembimbingReject();
+        for(int i = 0; i < listDosenR.size(); i++)
+        {
+            rowDataDosen[0] = listDosenR.get(i).getNama();
+            rowDataDosen[1] = listDosenR.get(i).getNidn();
+            rowDataDosen[2] = "Rejected";
+            tdmodel.addRow(rowDataDosen);
+        }
     }
 
     @Override
@@ -56,51 +76,47 @@ public class Handler_EditTA extends MouseAdapter implements ActionListener{
         Object source = ae.getSource();
         if(source.equals(ViewEditTA.getBtOut())){
             ViewEditTA.setVisible(false);
-            sTA.setVisible(true);
+            MP.setVisible(true);
         }else if(source.equals(ViewEditTA.getBtAddDosen())){
-            Person name = model.searchUser(ViewEditTA.getTFAddDosen().getText());
-            d.getKelasTA().addDosen((Dosen) name);
-        }else if(source.equals(ViewEditTA.getBtDel())){
-            if(p != null){
-                if(p instanceof Dosen){
-                    d.getKelasTA().delDosen((Dosen)p);
-                    ViewEditTA.getListDosen().clearSelection();
-                    ViewEditTA.setListDosen(d.getKelasTA().getListNamaDosen(), d.getKelasTA().getListNamaMahasiswa());
-                }else{
-                    d.getKelasTA().delMhs((Mahasiswa)p);
-                    ViewEditTA.getListMhs().clearSelection();
-                    ViewEditTA.setListDosen(d.getKelasTA().getListNamaDosen(), d.getKelasTA().getListNamaMahasiswa());
+            if(d!=null){
+                m.addPembimbingTA(d);
+                ArrayList<Dosen> listDosenA = m.getTugasAkhir().getPembimbing();
+                Object rowDataDosen[] = new Object[3];
+                for(int i = 0; i < listDosenA.size(); i++)
+                {
+                    rowDataDosen[0] = listDosenA.get(i).getNama();
+                    rowDataDosen[1] = listDosenA.get(i).getNidn();
+                    rowDataDosen[2] = "Approve";
+                    tdmodel.addRow(rowDataDosen);
+                }
+                ArrayList<Dosen> listDosenAN = m.getTugasAkhir().getPembimbingNonApproval();
+                for(int i = 0; i < listDosenA.size(); i++)
+                {
+                    rowDataDosen[0] = listDosenAN.get(i).getNama();
+                    rowDataDosen[1] = listDosenAN.get(i).getNidn();
+                    rowDataDosen[2] = "Non Approve";
+                    tdmodel.addRow(rowDataDosen);
+                }
+                ArrayList<Dosen> listDosenR = m.getTugasAkhir().getPembimbingReject();
+                for(int i = 0; i < listDosenR.size(); i++)
+                {
+                    rowDataDosen[0] = listDosenR.get(i).getNama();
+                    rowDataDosen[1] = listDosenR.get(i).getNidn();
+                    rowDataDosen[2] = "Rejected";
+                    tdmodel.addRow(rowDataDosen);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Anda belum memilih apapun", "WARNING", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Silahkan pilih dosen terlebih dulu", "WARNING", JOptionPane.WARNING_MESSAGE);
             }
         }
-        sTA.setListKodeKelas(d.getListKodeKelas());
     }
     
     @Override
     public void mousePressed(MouseEvent ae){
         Object source = ae.getSource();
         if(source.equals(ViewEditTA.getListDosen())){
-            String nama = ViewEditTA.getSelectedDosen();
-            p = model.searchUser(nama);
-            Dosen dosen = (Dosen)p;
-            ViewEditTA.getListMhs().clearSelection();
-            tmodel.removeRow(0);
-            rowData[0] = dosen.getNama();
-            rowData[1] = dosen.getNidn();
-            rowData[2] = dosen.getNohp();
-            tmodel.addRow(rowData);
-        }else if(source.equals(ViewEditTA.getListMhs())){
-            String nama = ViewEditTA.getSelectedMhs();
-            p = model.searchUser(nama);
-            Mahasiswa mhs = (Mahasiswa)p;
-            ViewEditTA.getListDosen().clearSelection();
-            tmodel.removeRow(0);
-            rowData[0] = mhs.getNama();
-            rowData[1] = mhs.getNim();
-            rowData[2] = mhs.getNohp();
-            tmodel.addRow(rowData);
+            String nama = ViewEditTA.getSelectedID();
+            d = m.getKelasTA().getDosen(nama);
         }
     }
 }

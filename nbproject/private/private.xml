@@ -7,7 +7,6 @@
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/AddUserPanel.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/MahasiswaPanel.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Model/Dosen.java</file>
-            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_CreateTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/HomeScreen.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_EditTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_Mahasiswa.java</file>
@@ -15,14 +14,16 @@
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_Login.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Model/KelasTugasAkhir.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Model/Application.java</file>
+            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/ApproveMhs.java</file>
+            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_EditKTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/DosenPanel.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/AdminPanel.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_addUser.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_seeUser.java</file>
-            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/uploadTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Driver/Driver.java</file>
+            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/createKTA.java</file>
+            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/EditKTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/createTA.java</file>
-            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/EditTAPanel.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_Dosen.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_Home.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_editUser.java</file>
@@ -30,7 +31,9 @@
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Model/TugasAkhir.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_SeeTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/seeTA.java</file>
+            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/EditTA.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/View/LoginScreen.java</file>
+            <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Controller/Handler_ApproveMhs.java</file>
             <file>file:/C:/Users/DivaPrasetya/Documents/NetBeansProjects/FinalProject/src/Model/Person.java</file>
         </group>
     </open-files>
